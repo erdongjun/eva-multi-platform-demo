@@ -13,6 +13,7 @@ export default class EntityManager extends Component {
 
   x: number;
   y: number;
+  socketId: string;
   fsm: StateMachine;
   _state: PLAYER_STATE;
   _direction: DIRECTION_ENUM;
@@ -24,6 +25,7 @@ export default class EntityManager extends Component {
     this.state = dto.state;
     this.fsm = this.gameObject.getComponent(StateMachine) || null;
     this.direction = dto.direction;
+    this.socketId = ''
   }
 
   /***

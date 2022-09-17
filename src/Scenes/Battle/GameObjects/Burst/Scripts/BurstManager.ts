@@ -37,6 +37,7 @@ export default class BurstManager extends EntityManager {
       this.state = PLAYER_STATE.DEATH;
       //如果我裂开的时候你人在我上面，你直接狗带吧
       if (this.x === curPlayerX && this.y === curPlayerY) {
+        console.log('裂开造成的人物死亡')
         EventManager.Instance.emit(EVENT_ENUM.ATTACK_PLAYER, PLAYER_STATE.AIRDEATH);
       }
     }

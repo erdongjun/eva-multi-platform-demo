@@ -74,6 +74,7 @@ export default class SpikesManager extends Component {
   onAttack() {
     const { x: playerX, y: playerY } = DataManager.Instance.player;
     if (playerX === this.x && playerY === this.y && this.curPointCount === this.totalPointCount) {
+      console.log('地刺造成的人物死亡 onAttack')
       EventManager.Instance.emit(EVENT_ENUM.ATTACK_PLAYER, PLAYER_STATE.DEATH);
     }
   }

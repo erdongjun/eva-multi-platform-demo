@@ -32,6 +32,7 @@ export default class DoorManager extends EntityManager {
       DataManager.Instance.enemies.every((enemy: EntityManager) => enemy.state === PLAYER_STATE.DEATH) &&
       this.state !== PLAYER_STATE.DEATH
     ) {
+      console.log('角色死亡')
       this.state = PLAYER_STATE.DEATH;
     }
   }

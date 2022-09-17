@@ -13,12 +13,18 @@ interface ActionType {
   text?: string
   name?: string
   actionType?: string
+  socketId?: string
+  
+}
+
+export  const operationObj = {
+  socketId:''
 }
 
 function renderMsg({ type, text, name }: ActionType) {
   const child = $('#msg-list').children('.msg')
   const len = child.length
-  if (len > 3) {
+  if (len > 9) {
     // 移除第一条
     $('#msg-list').children('.msg:first').remove();
   } 
@@ -27,8 +33,8 @@ function renderMsg({ type, text, name }: ActionType) {
 }
 
 // 触发相应的动作
-function actionType({ type, text, name, actionType }: ActionType) {
-  console.log({ fun: 'actionType', type, text, name ,actionType})
+function actionType({ type, text, name, actionType, socketId }: ActionType) {
+  console.log({ fun: 'actionType', type, text, name ,actionType, socketId})
   renderMsg({ type, text, name })
   switch (type) {
     // 开始游戏
@@ -58,17 +64,15 @@ function actionType({ type, text, name, actionType }: ActionType) {
     case 1005:
       EventManager.Instance.emit(EVENT_ENUM.REVOKE_STEP);
       break;
-    
+    // 控制人物动作
     case 2001:
     case 2002:
     case 2003:
     case 2004:
     case 2005:
     case 2006:
-      EventManager.Instance.emit(EVENT_ENUM.PLAYER_CTRL,actionType);
+      EventManager.Instance.emit(EVENT_ENUM.PLAYER_CTRL, {type:actionType, socketId});
       break;
-    
-    // EventManager.Instance.emit(EVENT_ENUM.PLAYER_CTRL, type);
     default:
       break;
   }
@@ -105,7 +109,7 @@ socket.on('game-data', data => {
 })
   })
   list.sort((a, b) => {
-    return a.count -b.count
+    return b.count - a.count
   }).forEach((item, index) => {
     el+= '<p class="msg">'+(index+1)+'. '+item.name+'-'+item.id.slice(0,4)+'：'+item.count+'</p>'
   })
@@ -125,18 +129,10 @@ export function tapAction(data: any) {
   socket.emit('data', data);
 }
 
+export function tapScore(data: any) {
+  socket.emit('score', data);
+}
+
 export function socketInit() {
   console.log('int socket')
 }
-
-
-// xxx 开始了游戏 1
-// xxx 左转身
-// xxx 右转身
-// xxx 向上走
-// xxx 向下走 
-// xxx 向左走 
-// xxx 向右走 
-// xxx 你被击杀 
-// xxx 重新开始 
-// xxx 击杀成功，积分榜+1

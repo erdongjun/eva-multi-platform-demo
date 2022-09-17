@@ -20,7 +20,7 @@ const Footer = () => {
 
   go.addComponent(
     new Text({
-      text: '地牢冒险',
+      text: '地牢冒险玩法说明：有效移动/转身一步：积分+1，击杀敌人：+200，人物死亡：积分-20。可操作动作：左转，右转，上，下，左，右',
       style: {
         fontFamily: 'Arial',
         fontSize: 12,

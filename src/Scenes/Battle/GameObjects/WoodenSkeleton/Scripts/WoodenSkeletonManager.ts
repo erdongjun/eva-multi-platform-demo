@@ -32,6 +32,7 @@ export default class WoodenSkeletonManager extends EnemyManager {
         (playerY === this.y && Math.abs(playerX - this.x) <= 1)) &&
       playerState === PLAYER_STATE.IDLE
     ) {
+      console.log('敌人造成的人物死亡 onAttack2')
       this.state = PLAYER_STATE.ATTACK;
       EventManager.Instance.emit(EVENT_ENUM.ATTACK_PLAYER, PLAYER_STATE.DEATH);
     }

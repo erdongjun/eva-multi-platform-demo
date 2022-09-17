@@ -63,7 +63,7 @@ export default class EnemyManager extends EntityManager {
       return;
     }
     if (this.id === id) {
-      console.log('死亡', id)
+      console.log('敌人死亡，玩家分数+1', id)
       this.state = PLAYER_STATE.DEATH;
     }
   }

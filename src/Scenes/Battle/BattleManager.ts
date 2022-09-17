@@ -19,6 +19,8 @@ import Spikes from './GameObjects/Spikes/Spikes';
 import SpikesManager from './GameObjects/Spikes/Scripts/SpikesManager';
 import EnemyManager from '../../Base/EnemyManager';
 import BurstManager from './GameObjects/Burst/Scripts/BurstManager';
+import {tapScore} from '../../../../../Socket/index'
+
 
 export default class BattleManager extends Component {
   static componentName = 'BattleManager'; // 设置组件的名字
@@ -55,6 +57,8 @@ export default class BattleManager extends Component {
       DataManager.Instance.fm.fadeIn(200).then(() => {
         this.clearLevel();
         console.log('level' + DataManager.Instance.levelIndex);
+        if( DataManager.Instance.levelIndex)
+        
         // 防止把抖动效果带到下一关，导致下一关错位
         this.isShaking = false;
         DataManager.Instance.reset();

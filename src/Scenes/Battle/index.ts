@@ -41,9 +41,9 @@ const Battle = () => {
   scene.addChild(container);
 
   // 加载控制器
-  scene.addChild(Controller());
+  // scene.addChild(Controller());
   // 顶部菜单
-  scene.addChild(Menu());
+  // scene.addChild(Menu());
   // 底部说明
   scene.addChild(Footer());
 

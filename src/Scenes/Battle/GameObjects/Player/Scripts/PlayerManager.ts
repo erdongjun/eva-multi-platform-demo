@@ -8,6 +8,9 @@ import BattleManager from '../../../BattleManager';
 import EnemyManager from '../../../../../Base/EnemyManager';
 import BurstManager from '../../Burst/Scripts/BurstManager';
 
+import {tapScore,operationObj} from '../../../../../Socket/index'
+
+
 export default class PlayerManager extends EntityManager {
   targetX: number;
   targetY: number;
@@ -79,6 +82,8 @@ export default class PlayerManager extends EntityManager {
    * 玩家死亡
    */
   onDead(type: PLAYER_STATE) {
+    console.log('玩家死亡', operationObj.socketId)
+    tapScore({socketId: operationObj.socketId, score: -20})
     this.state = type;
   }
 
@@ -86,7 +91,8 @@ export default class PlayerManager extends EntityManager {
    * 响应玩家操作
    * @param type
    */
-  inputProcess(type: CONTROLLER_ENUM) {
+  inputProcess({type,socketId}: {type: CONTROLLER_ENUM, socketId: string}) {
+    // return false
     if (!this.isMoveEndX || !this.isMoveEndY) {
       return;
     }
@@ -101,12 +107,17 @@ export default class PlayerManager extends EntityManager {
 
     const id = this.attackEnemy(type);
     if (id !== -1) {
+      // 触发人物进攻
+      console.log({ fun: '玩家动作-触发人物进攻-分数+200', type, socketId })
+      tapScore({socketId,score: 200})
       EventManager.Instance.emit(EVENT_ENUM.RECORD_STEP);
       EventManager.Instance.emit(EVENT_ENUM.PLAYER_MOVE_END);
       this.state = PLAYER_STATE.ATTACK;
       EventManager.Instance.emit(EVENT_ENUM.ATTACK_ENEMY, id);
       return;
     }
+
+
 
     if (this.WillBlock(type)) {
       if (type === CONTROLLER_ENUM.TOP) {
@@ -148,7 +159,10 @@ export default class PlayerManager extends EntityManager {
       // }
       return;
     }
-
+    // 触发人物移动
+    console.log({ fun: '玩家动作-触发人物移动', type, socketId })
+    operationObj.socketId = socketId
+    tapScore({socketId,score: 1})
     this.move(type);
   }
 

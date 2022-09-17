@@ -19,7 +19,7 @@ const Tips = () => {
 
   go.addComponent(
     new Text({
-      text: '（输入：开始）',
+      text: '是兄弟就来一起并肩作战吧！',
       style: {
         fontFamily: 'Arial',
         fontSize: 18,
