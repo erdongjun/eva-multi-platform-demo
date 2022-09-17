@@ -63,6 +63,7 @@ export default class EnemyManager extends EntityManager {
       return;
     }
     if (this.id === id) {
+      console.log('死亡', id)
       this.state = PLAYER_STATE.DEATH;
     }
   }

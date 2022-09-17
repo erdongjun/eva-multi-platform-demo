@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <title>Cramped Room Of Death</title>
+      <title>弹幕互动游戏演示</title>
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
@@ -12,10 +12,62 @@
         padding: 0;
         border: 0;
       }
+      body{
+        position: relative;
+      }
+      .rank-body{
+        position: absolute;
+        z-index: 99;
+        width: 250px;
+        height: 100%;
+        left: 0;
+        top: 0;
+        color: #fff;
+        padding: 10px;
+      }
+      .rank-body-right{
+        position: absolute;
+        z-index: 99;
+        width: 200px;
+        height: 100%;
+        right: 0;
+        top: 0;
+        color: #fff;
+        padding: 10px;
+      }
+      select,Button{
+        width: 50px;
+        height: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      input{
+         width: 150px;
+        height: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding-left: 5px;
+      }
+      .msg{
+        word-break: break-all;
+      }
     </style>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
   </head>
 
   <body>
     <canvas width="750" height="1000" id="canvas" style="width: 100%"></canvas>
+    <div class="rank-body">
+      <h2>消息列表</h2>
+      <div class="msg-list" id="msg-list">
+      </div>
+      
+    </div>
+    <div class="rank-body-right">
+      <h2>积分榜</h2>
+      <p class="msg">当前参与人数：<span id="count">0</span></p>
+      <div class="msg-list" id="rank-list">
+      </div>
+    </div>
   </body>
 </html>

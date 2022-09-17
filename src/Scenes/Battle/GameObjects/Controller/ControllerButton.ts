@@ -116,11 +116,11 @@ const ControllerButton = (type: CONTROLLER_ENUM, index: number) => {
   const eventManager = go.addComponent(new Event());
 
   eventManager.on('touchstart', () => {
-    animation.play('small', 1);
+    // animation.play('small', 1);
   });
 
   const touchHandler = () => {
-    animation.play('big', 1);
+    // animation.play('big', 1);
     EventManager.Instance.emit(EVENT_ENUM.PLAYER_CTRL, type);
   };
 

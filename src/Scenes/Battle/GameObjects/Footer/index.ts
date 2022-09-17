@@ -20,7 +20,7 @@ const Footer = () => {
 
   go.addComponent(
     new Text({
-      text: 'Cramped Room of Death Demo',
+      text: '地牢冒险',
       style: {
         fontFamily: 'Arial',
         fontSize: 12,

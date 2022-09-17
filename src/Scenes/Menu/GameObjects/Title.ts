@@ -19,7 +19,7 @@ const Title = () => {
 
   go.addComponent(
     new Text({
-      text: 'Cramped Room of Death',
+      text: '弹幕互动游戏',
       style: {
         fontFamily: 'Arial',
         fontSize: 36,

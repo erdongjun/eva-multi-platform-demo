@@ -13,10 +13,13 @@ import StartScene from './Scenes/Start';
 import DataManager from './Runtime/DataManager';
 // import { StatsSystem } from '@eva/plugin-stats';
 
-// export const SCREEN_WIDTH = window.innerWidth;
-// export const SCREEN_HEIGHT = window.innerHeight;
-export const SCREEN_WIDTH = 375;
-export const SCREEN_HEIGHT = 667;
+import {socketInit} from './Socket'
+
+
+export const SCREEN_WIDTH = window.innerWidth;
+export const SCREEN_HEIGHT = window.innerHeight;
+// export const SCREEN_WIDTH = 375;
+// export const SCREEN_HEIGHT = 667;
 
 resource.addResource(resources);
 
@@ -67,4 +70,7 @@ game.loadScene({
 
 window.game = game;
 
+socketInit()
+
 // import  './test.ts'
+

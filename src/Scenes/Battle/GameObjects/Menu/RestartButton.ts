@@ -5,6 +5,7 @@ import EventManager from '../../../../Runtime/EventManager';
 import { EVENT_ENUM } from '../../../../Enum';
 import { Event } from '@eva/plugin-renderer-event';
 
+
 const RestartButton = () => {
   const go = new GameObject('restartButton', {
     size: { width: START_BUTTON_WIDTH, height: START_BUTTON_HEIGHT },

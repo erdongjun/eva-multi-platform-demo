@@ -19,7 +19,7 @@ const Creator = () => {
 
   go.addComponent(
     new Text({
-      text: 'Created By Sli97',
+      text: '弹幕互动游戏DEMO',
       style: {
         fontFamily: 'Arial',
         fontSize: 12,

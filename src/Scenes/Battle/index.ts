@@ -40,8 +40,11 @@ const Battle = () => {
   );
   scene.addChild(container);
 
+  // 加载控制器
   scene.addChild(Controller());
+  // 顶部菜单
   scene.addChild(Menu());
+  // 底部说明
   scene.addChild(Footer());
 
   //当Battle加载完成，才去掉mask，防止场景的物体和fader闪烁的问题

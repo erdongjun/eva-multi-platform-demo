@@ -19,7 +19,7 @@ const Tips = () => {
 
   go.addComponent(
     new Text({
-      text: '（Tap Any Where To Start）',
+      text: '（输入：开始）',
       style: {
         fontFamily: 'Arial',
         fontSize: 18,
